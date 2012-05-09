@@ -9,7 +9,7 @@ In contrast to [klaussukveira/phpcs-psr1][2] this coding standard defines more s
 ## Features
 
 * Follows the [PSR-1][1] Coding Style Guide.
-* Mostly compatible with the [PEAR Coding Standards][http://pear.php.net/manual/standards.php].
+* Mostly compatible with the [PEAR Coding Standards][6].
 * Includes almost every sniff that ships with [PHP_CodeSniffer][2] version 1.3.3 (stable).
 
 ## Requirements
@@ -79,3 +79,4 @@ You should have received a copy of the GNU Lesser General Public License along w
 [3]: http://pear.php.net/package/PHP_CodeSniffer
 [4]: http://php.net
 [5]: http://pear.php.net
+[6]: http://pear.php.net/manual/standards.php
