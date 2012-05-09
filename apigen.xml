@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ! apigen.xml
+ !
+ ! Phing buildfile that contains common targets for "ApiGen".
+ !
+ ! This file is part of fwPhingCommons.
+ !
+ ! fwPhingCommons is free software: you can redistribute it and/or modify it
+ ! under the terms of the GNU Lesser General Public License as published by the
+ ! Free Software Foundation, either version 3 of the License, or (at your
+ ! option) any later version.
+ !
+ ! fwPhingCommons is distributed in the hope that it will be useful, but WITHOUT
+ ! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ ! FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
+ ! details.
+ !
+ ! You should have received a copy of the GNU Lesser General Public License
+ ! along with fwPhingCommons.  If not, see http://gnu.org/licenses/lgpl.txt.
+ !
+ ! Author:    Florian Wolters <florian.wolters.85@googlemail.com>
+ ! Copyright: 2011-2012 Florian Wolters
+ ! License:   http://gnu.org/licenses/lgpl.txt GNU LGPL
+ ! Version:   GIT: $Id$
+ ! Link:      http://github.com/FlorianWolters/fwPhingCommons
+ ! Link:      http://apigen.org
+ !-->
+<project name="fwPhingCommons-apigen">
+
+    <property name="apigen.failonerror"      value="true" />
+
+    <property name="apigen.dir.input"        value="${project.src.phpdir}" />
+    <property name="apigen.dir.output"       value="${project.review.docsdir}" />
+
+    <property name="apigen.deprecated"       value="yes" />
+    <property name="apigen.internal"         value="no" />
+    <property name="apigen.php"              value="no" />
+    <property name="apigen.download"         value="yes" />
+    <property name="apigen.source.code"      value="yes" />
+    <property name="apigen.tree"             value="yes" />
+    <property name="apigen.todo"             value="no" />
+
+    <property name="apigen.colors"           value="yes" />
+    <property name="apigen.debug"            value="yes" />
+    <property name="apigen.quiet"            value="no" />
+    <property name="apigen.progressbar"      value="yes" />
+    <property name="apigen.wipeout"          value="yes" />
+
+    <property name="apigen.groups"           value="auto" />
+    <property name="apigen.autocomplete"     value="classes,constants,functions" />
+    <property name="apigen.access.levels"    value="public,protected" />
+    <property name="apigen.allowed.html"     value="b,i,a,ul,ol,li,p,br,var,samp,kbd,tt" />
+    <property name="apigen.skip.doc.path"    value="" />
+    <property name="apigen.skip.doc.prefix"  value="" />
+
+    <property name="apigen.google.id"        value="${documentation.google.cse.id}" />
+    <property name="apigen.google.label"     value="${documentation.google.cse.label}" />
+    <property name="apigen.google.analytics" value="${documentation.google.analytics}" />
+
+    <target name="-apigen-clean">
+        <delete dir="${apigen.dir.output}" includeemptydirs="true" />
+    </target>
+
+    <target name="-apigen-init">
+        <mkdir dir="${apigen.dir.output}" />
+    </target>
+
+    <target name="apigen"
+            depends="-apigen-init"
+            description="Creates a documentation from the PHP source code using ApiGen.">
+        <exec executable="apigen" checkreturn="${apigen.failonerror}">
+            <arg value="--source=${apigen.dir.input}" />
+            <arg value="--destination=${apigen.dir.output}" />
+            <arg value="--extensions=${project.extension.php}" />
+            <!--<arg value="\-\-exclude=${todo}" />-->
+            <arg value="--skip-doc-path=${apigen.skip.doc.path}" />
+            <arg value="--skip-doc-prefix=${apigen.skip.doc.prefix}" />
+            <arg value="--charset=${project.charset}" />
+            <arg value="--main=${project.name}" />
+            <arg value="--title=${project.name}" />
+            <arg value="--base-url=${project.url.doc}" />
+            <arg value="--google-cse-id=${apigen.google.id}" />
+            <arg value="--google-cse-label=${apigen.google.label}" />
+            <arg value="--google-analytics=${apigen.google.analytics}" />
+            <!--<arg value="\-\-template-config=${todo}" />-->
+            <arg value="--allowed-html=${apigen.allowed.html}" />
+            <arg value="--groups=${apigen.groups}" />
+            <arg value="--autocomplete=${apigen.autocomplete}" />
+            <arg value="--access-levels=${apigen.access.levels}" />
+            <arg value="--internal=${apigen.internal}" />
+            <arg value="--php=${apigen.php}" />
+            <arg value="--tree=${apigen.tree}" />
+            <arg value="--deprecated=${apigen.deprecated}" />
+            <arg value="--todo=${apigen.todo}" />
+            <arg value="--source-code=${apigen.source.code}" />
+            <arg value="--download=${apigen.download}" />
+            <arg value="--wipeout=${apigen.wipeout}" />
+            <arg value="--quiet=${apigen.quiet}" />
+            <arg value="--progressbar=${apigen.progressbar}" />
+            <arg value="--colors=${apigen.colors}" />
+            <arg value="--update-check=no" />
+            <arg value="--debug=${apigen.debug}" />
+        </exec>
+    </target>
+
+</project>
