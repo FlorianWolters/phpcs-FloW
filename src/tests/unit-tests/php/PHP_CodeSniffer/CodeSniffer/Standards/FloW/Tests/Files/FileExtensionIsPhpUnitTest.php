@@ -21,7 +21,7 @@
  *
  * @category  PHP
  * @package   PHP_CodeSniffer
- * @author    Florian Wolters <florian.wolters.85@googlemail.com>
+ * @author    Florian Wolters <florian.wolters.85@gmail.com>
  * @copyright 2012 Florian Wolters
  * @license   http://gnu.org/licenses/lgpl.txt GNU LGPL
  * @link      http://pear.php.net/package/PHP_CodeSniffer
@@ -35,7 +35,7 @@ declare(encoding = 'UTF-8');
  *
  * @category  PHP
  * @package   PHP_CodeSniffer
- * @author    Florian Wolters <florian.wolters.85@googlemail.com>
+ * @author    Florian Wolters <florian.wolters.85@gmail.com>
  * @copyright 2012 Florian Wolters
  * @license   http://gnu.org/licenses/lgpl.txt GNU LGPL
  * @version   Release: @package_version@
